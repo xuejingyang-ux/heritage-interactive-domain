@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;500;600;700&family=ZCOOL+XiaoWei&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Noto Serif SC", "ZCOOL XiaoWei", "Source Han Serif SC", "Songti SC", serif;
+  --font-calligraphy: "Ma Shan Zheng", "STKaiti", "KaiTi", cursive;
+
+  --color-tianqing: #a8bfbe;
+  --color-dailan: #3d4851;
+  --color-zhusha: #b4422f;
+  --color-tenghuang: #ca8e30;
+  --color-ink: #211d19;
+  --color-paper: #f3ecdf;
+  --color-ochre: #7a5933;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply text-ink overflow-x-hidden antialiased;
+    line-height: 1.6;
+    letter-spacing: 0.012em;
+    background-color: var(--color-paper);
+    background-image:
+      radial-gradient(circle at 10% 18%, rgba(180, 66, 47, 0.1) 0, rgba(180, 66, 47, 0) 33%),
+      radial-gradient(circle at 84% 10%, rgba(61, 72, 81, 0.09) 0, rgba(61, 72, 81, 0) 30%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.46), rgba(241, 235, 224, 0.98));
+    background-attachment: fixed;
+  }
+
+  button,
+  input,
+  textarea {
+    font: inherit;
+  }
+
+  textarea {
+    line-height: 1.7;
+  }
+
+  .glass {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+}
+
+@layer components {
+  .heritage-shell {
+    background:
+      linear-gradient(140deg, rgba(255, 255, 255, 0.84), rgba(244, 238, 227, 0.9)),
+      url('https://www.transparenttextures.com/patterns/rice-paper-3.png');
+    border: 1px solid rgba(33, 29, 25, 0.14);
+    border-radius: 1.35rem;
+    box-shadow:
+      0 12px 36px rgba(42, 28, 20, 0.07),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.38);
+  }
+
+  .ink-frame {
+    position: relative;
+    border-radius: 1.2rem;
+    overflow: hidden;
+  }
+
+  .ink-frame::before,
+  .ink-frame::after {
+    content: '';
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border: 1px solid rgba(202, 142, 48, 0.55);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .ink-frame::before {
+    top: 10px;
+    left: 10px;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .ink-frame::after {
+    right: 10px;
+    bottom: 10px;
+    border-left: 0;
+    border-top: 0;
+  }
+
+  .hero-calligraphy {
+    font-family: var(--font-calligraphy);
+    text-shadow: 0 12px 36px rgba(180, 66, 47, 0.23);
+  }
+
+  .module-title {
+    letter-spacing: 0.03em;
+    line-height: 1.24;
+  }
+
+  .module-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(122, 89, 51, 0.35);
+    background: rgba(202, 142, 48, 0.08);
+    color: rgba(122, 89, 51, 0.98);
+    border-radius: 999px;
+    padding: 0.22rem 0.72rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .seal-chip {
+    border: 1px solid rgba(180, 66, 47, 0.45);
+    color: rgba(180, 66, 47, 0.98);
+    background: rgba(180, 66, 47, 0.08);
+    border-radius: 999px;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.36rem 0.9rem;
+  }
+
+  .ornament-divider {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, transparent, rgba(122, 89, 51, 0.45), transparent);
+  }
+
+  .nav-shell {
+    background:
+      linear-gradient(180deg, rgba(243, 236, 223, 0.9), rgba(243, 236, 223, 0.78)),
+      url('https://www.transparenttextures.com/patterns/rice-paper-2.png');
+    border-bottom: 1px solid rgba(33, 29, 25, 0.12);
+    backdrop-filter: blur(14px);
+  }
+
+  .nav-link {
+    color: rgba(33, 29, 25, 0.68);
+  }
+
+  .nav-link.active,
+  .nav-link:hover {
+    color: rgba(33, 29, 25, 0.98);
+  }
+
+  .floating-mist {
+    position: absolute;
+    inset: 12% 18% auto;
+    height: 220px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+    filter: blur(6px);
+    animation: mistFloat 7.5s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes mistFloat {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.34;
+  }
+
+  100% {
+    transform: translateY(-16px) translateX(24px);
+    opacity: 0.55;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(61, 72, 81, 0.55);
+  border-radius: 10px;
+}

@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: heritage-interactive-domain
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_PORT
+        value: 10000
+      - key: DB_PATH
+        value: server/data/app.db
+      - key: ZHIPU_API_KEY
+        sync: false

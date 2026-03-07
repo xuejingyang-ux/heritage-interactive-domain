@@ -1,0 +1,7 @@
+{
+  "name": "境生·万象 - 非遗沉浸交互域",
+  "description": "基于Web3D与AIGC的中华非遗“活态”沉浸式交互空间，涵盖榫卯解构、数字皮影、诗词画境与历史长卷。",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
