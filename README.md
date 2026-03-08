@@ -90,9 +90,54 @@ npm run dev:client
 
 ---
 
-## 🏁 比赛提交网址（推荐单网址部署）
+## 🏁 比赛提交网址（推荐 Netlify Free）
 
-赛方要求提交可访问网址时，建议使用 **Render 单服务部署**（前后端同域名，一个链接即可演示全部功能）。
+如果你希望**免绑卡**并快速拿到一个可访问网址，建议使用 **Netlify Free**。当前仓库已经补充了 `netlify.toml` 和 `netlify/functions/api.mjs`，前端会发布为静态站点，`/api` 会由 Netlify Functions 提供。
+
+### 1. 推送代码到 GitHub
+
+确保仓库包含：
+
+- `netlify.toml`
+- `netlify/functions/api.mjs`
+- `src/` + `vite.config.ts`
+
+### 2. 在 Netlify 导入仓库
+
+1. 登录 Netlify，点击 **Add new project** → **Import an existing project**
+2. 选择 GitHub 并授权仓库访问
+3. 选择你的仓库 `heritage-interactive-domain`
+4. Build command 填：`npm install && npm run build`
+5. Publish directory 填：`dist`
+
+### 3. 配置环境变量
+
+在 Netlify 项目设置中补充：
+
+- `ZHIPU_API_KEY=你的key`
+
+### 4. 等待部署完成并获取 URL
+
+部署成功后会得到类似：
+
+`https://your-site-name.netlify.app`
+
+这个链接就是可提交的网址。
+
+### 5. 提交前检查
+
+- `https://.../` 首页可打开
+- `https://.../sunmao` 等子页面可直接访问
+- `https://.../api/health` 返回健康检查 JSON
+- 摄像头模块需 HTTPS（Netlify 默认是 HTTPS）
+
+> 说明：Netlify 版本的 `/api/poetry/history` 使用函数内存保存最近记录，适合演示，不保证长期持久化。如果你需要稳定保存历史记录，后续应接入外部数据库。
+
+---
+
+## 🏁 备选方案：Render 单服务部署
+
+如果你更看重后端常驻服务和 SQLite 本地持久化，也可以继续使用 **Render 单服务部署**（前后端同域名，一个链接即可演示全部功能）。
 
 ### 1. 推送代码到 GitHub
 
