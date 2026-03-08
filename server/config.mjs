@@ -2,6 +2,7 @@ export const config = {
   apiPort: Number(process.env.PORT || process.env.API_PORT || 8787),
   zhipuApiKey: process.env.ZHIPU_API_KEY || '',
   dbPath: process.env.DB_PATH || 'server/data/app.db',
+  corsOrigin: process.env.CORS_ORIGIN || '*',
 };
 
 export function requireZhipuApiKey() {

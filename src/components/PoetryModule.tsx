@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, Loader2, Image as ImageIcon, History } from 'lucide-react';
+import { apiUrl } from '../lib/api';
 
 type PoetryResult = {
   id?: number;
@@ -33,7 +34,7 @@ export default function PoetryModule() {
   const loadHistory = async () => {
     setHistoryLoading(true);
     try {
-      const response = await fetch('/api/poetry/history?limit=8');
+      const response = await fetch(apiUrl('/api/poetry/history?limit=8'));
       if (!response.ok) throw new Error('历史记录加载失败');
       const data = (await response.json()) as HistoryResponse;
       setHistory(
@@ -62,7 +63,7 @@ export default function PoetryModule() {
     setError('');
 
     try {
-      const response = await fetch('/api/poetry', {
+      const response = await fetch(apiUrl('/api/poetry'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
